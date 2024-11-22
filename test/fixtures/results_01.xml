@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="rspec" tests="4" skipped="0" failures="0" errors="0" time="10.000000"
+  timestamp="2024-11-20T19:20:54+00:00" hostname="fa7454363e3b">
+  <properties>
+    <property name="seed" value="11111" />
+  </properties>
+  <testcase classname="spec.models.simple_part2_spec" name="Simple Part2 Test 1"
+    file="./spec/models/simple_part2_spec.rb" time="3.000000"></testcase>
+  <testcase classname="spec.models.simple_part2_spec" name="Simple Part2 Test 2"
+    file="./spec/models/simple_part2_spec.rb" time="4.000000"></testcase>
+  <testcase classname="spec.models.simple_part2_spec" name="Simple Part2 Test 3"
+    file="./spec/models/simple_part2_spec.rb" time="1.000000"></testcase>
+  <testcase classname="spec.models.simple_part2_spec" name="Simple Part2 Test 4"
+    file="./spec/models/simple_part2_spec.rb" time="2.000000"></testcase>
+</testsuite>

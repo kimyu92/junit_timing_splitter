@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="rspec" tests="3" skipped="0" failures="0" errors="0" time="30.000000"
+  timestamp="2024-11-20T19:20:54+00:00" hostname="fa7454363e3b">
+  <properties>
+    <property name="seed" value="33333" />
+  </properties>
+  <testcase classname="spec.models.imbalanced_part2_spec" name="Imbalanced Part2 Test 1"
+    file="./spec/models/imbalanced_part2_spec.rb" time="15.000000"></testcase>
+  <testcase classname="spec.models.other_class1_spec" name="Other Class1 Test 1"
+    file="./spec/models/other_class1_spec.rb" time="10.000000"></testcase>
+  <testcase classname="spec.models.other_class2_spec" name="Other Class2 Test 1"
+    file="./spec/models/other_class2_spec.rb" time="5.000000"></testcase>
+</testsuite>

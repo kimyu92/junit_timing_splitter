@@ -1,0 +1,5 @@
+#!/usr/bin/env
+
+require 'junit_timing_splitter'
+
+JunitTimingSplitter::Cli.start(ARGV)
