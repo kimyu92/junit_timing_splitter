@@ -1,5 +1,8 @@
 # JunitTimingSplitter
 
+[![GemVersion](https://img.shields.io/gem/v/junit_timing_splitter.svg?style=flat)](https://rubygems.org/gems/junit_timing_splitter)
+![CI](https://github.com/kimyu92/junit_timing_splitter/workflows/CI/badge.svg)
+
 `JunitTimingSplitter` is a tool written in Ruby designed to parse JUnit XML result files and distribute tests into evenly balanced buckets based on their total execution time. This tool is especially beneficial for optimizing parallel test execution in CI pipelines, drawing inspiration from CircleCI's `--split-by=timings` feature.
 
 ---
@@ -81,14 +84,14 @@ Missing test files:
 
 4. Merge the missing test cases from the existing schema
 ```sh
-bundle exec junit_timing_splitter merge --schema="output/buckets.json" --files="./spec/**/*.rb"
+bundle exec junit_timing_splitter merge --schema="output/buckets.json" --files="./spec/**/*_spec.rb"
 ```
 
 ## Development
 
 ```sh
 # rebuild
-rm junit_timing_splitter-1.0.0.gem && gem build JunitTimingSplitter.gemspec && gem install junit_timing_splitter-1.0.0.gem
+rm junit_timing_splitter-1.1.0.gem && gem build JunitTimingSplitter.gemspec && gem install junit_timing_splitter-1.1.0.gem
 ```
 
 ```sh
