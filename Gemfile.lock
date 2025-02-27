@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    junit_timing_splitter (1.0.0)
+    junit_timing_splitter (1.1.0)
       json (~> 2.1, >= 2.1.0)
       nokogiri (>= 1.15, < 2.0)
       thor (~> 1.0)

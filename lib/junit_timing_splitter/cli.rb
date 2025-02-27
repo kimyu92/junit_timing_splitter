@@ -65,7 +65,7 @@ module JunitTimingSplitter
         if missing_files.empty?
           puts 'No missing test files to merge.'
         else
-          splitter = JunitTimingSplitter::Splitter.new([], schema.buckets.size)
+          splitter = JunitTimingSplitter::Splitter.new([], schema.buckets.size, existing_schema: schema.buckets)
           buckets = splitter.merge_missing_files(missing_files)
           buckets_as_hashes = buckets.map(&:to_h)
           File.write(options[:schema], JSON.pretty_generate(buckets_as_hashes))

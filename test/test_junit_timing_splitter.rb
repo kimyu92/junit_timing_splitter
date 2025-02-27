@@ -165,4 +165,35 @@ class TestJunitTimingSplitter < Minitest::Test
     File.delete("#{folder_path}/missing_test2.rb") if File.exist?("#{folder_path}/missing_test2.rb")
     FileUtils.rm_rf(folder_path) if Dir.exist?(folder_path)
   end
+
+  def test_merge_preserves_existing_buckets
+    # Setup a temporary schema with pre-existing buckets in expected format (array of bucket hashes)
+    initial_schema = [
+      { "files" => ["test_a.rb"], "total_time" => 0.0 },
+      { "files" => ["test_b.rb"], "total_time" => 0.0 }
+    ]
+    temp_schema_file = "temp_buckets.json"
+    File.write(temp_schema_file, JSON.pretty_generate(initial_schema))
+
+    # Load existing schema using Schema; simulate missing file "test_c.rb"
+    schema = JunitTimingSplitter::Schema.new(temp_schema_file)
+    missing_files = ["test_c.rb"]
+
+    # Merge missing files into existing buckets (as per CLI merge logic)
+    splitter = JunitTimingSplitter::Splitter.new([], schema.buckets.size, existing_schema: schema.buckets)
+    buckets = splitter.merge_missing_files(missing_files)
+    buckets_as_hashes = buckets.map(&:to_h)
+    File.write(temp_schema_file, JSON.pretty_generate(buckets_as_hashes))
+
+    merged_schema = JSON.parse(File.read(temp_schema_file))
+    bucket0 = merged_schema[0]["files"]
+    bucket1 = merged_schema[1]["files"]
+
+    # Validate that the original tests remain and the missing test is added (round-robin)
+    assert_includes bucket0, "test_a.rb", "Bucket 0 should retain test_a.rb"
+    assert_includes bucket1, "test_b.rb", "Bucket 1 should retain test_b.rb"
+    assert_includes bucket0 + bucket1, "test_c.rb", "Missing test should be merged without losing existing tests"
+
+    File.delete(temp_schema_file)
+  end
 end

@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name          = 'junit_timing_splitter'
-  spec.version       = '1.0.0'
+  spec.version       = '1.1.0'
   spec.summary       = 'Split test files into evenly distributed buckets based on execution time'
   spec.description   = 'A tool to optimize parallel test execution by analyzing JUnit XML results and distributing test files across buckets.'
   spec.author        = 'Kim Yu Ng'
@@ -8,6 +8,10 @@ Gem::Specification.new do |spec|
   spec.files         = Dir['lib/**/*.rb']
   spec.homepage      = 'https://github.com/kimyu92/junit_timing_splitter'
   spec.license       = 'MIT'
+
+  spec.metadata['bug_tracker_uri'] = 'https://github.com/kimyu92/junit_timing_splitter/issues'
+  spec.metadata['documentation_uri'] = 'https://github.com/kimyu92/junit_timing_splitter/blob/main/README.md'
+  spec.metadata['changelog_uri'] = 'https://github.com/kimyu92/junit_timing_splitter/blob/main/CHANGELOG.md'
 
   spec.files = Dir["lib/**/*.rb"]
   spec.bindir = "bin"

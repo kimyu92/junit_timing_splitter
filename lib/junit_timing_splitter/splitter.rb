@@ -2,10 +2,19 @@ module JunitTimingSplitter
   class Splitter
     attr_reader :parsed_timings, :total_splits, :buckets
 
-    def initialize(parsed_timings, total_splits)
+    def initialize(parsed_timings, total_splits, existing_schema: nil)
       @parsed_timings = parsed_timings
       @total_splits = total_splits
-      @buckets = Array.new(total_splits) { Bucket.new }
+      if existing_schema
+        @buckets = existing_schema.map do |bucket_hash|
+          b = Bucket.new
+          b.files = bucket_hash['files']
+          b.total_time = bucket_hash['total_time']
+          b
+        end
+      else
+        @buckets = Array.new(total_splits) { Bucket.new }
+      end
     end
 
     # Split the parsed timings into buckets based on total_splits
